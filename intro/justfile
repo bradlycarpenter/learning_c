@@ -1,0 +1,13 @@
+set shell := ["cmd", "/c"]
+
+build_dir := "build"
+
+build:
+    if not exist {{build_dir}} mkdir {{build_dir}}
+    cl /nologo /Zi /Fe:{{build_dir}}\intro.exe main.cpp /link /SUBSYSTEM:WINDOWS
+
+run: build
+    {{build_dir}}\intro.exe
+
+debug: build
+    raddbg.exe {{build_dir}}\intro.exe
