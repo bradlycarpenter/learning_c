@@ -15,15 +15,8 @@ int WINAPI WinMain(
     _In_ int nShowCmd
 )
 {
-    projectile Test;
-
-    int SizeOfTest = sizeof(Test);
-
-    Test.IsThisOnFire = 1;
-    Test.Damage = 2;
-    Test.ParticlesPerSecond = 3;
-    Test.HowManyCooks = 4;
-
-    projectile* ProjectilePointer = &Test;
-    short* MrPointerMan = (short*)&Test;
+    projectile Projectiles[40];
+    int SizeOfProjectiles = sizeof(Projectiles);
+    projectile* ProjectilePointer = Projectiles;
+    int SizeOfProjectilePointer = sizeof(ProjectilePointer);
 }
