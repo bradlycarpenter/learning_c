@@ -427,5 +427,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Outputs
 *.exe
 *.rdi
