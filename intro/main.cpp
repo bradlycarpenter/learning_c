@@ -1,5 +1,13 @@
 #include <windows.h>
 
+struct projectile
+{
+    char unsigned IsThisOnFire;
+    int Damage;
+    int ParticlesPerSecond;
+    short HowManyCooks;
+};
+
 int WINAPI WinMain(
     _In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
@@ -7,8 +15,15 @@ int WINAPI WinMain(
     _In_ int nShowCmd
 )
 {
+    projectile Test;
 
-    unsigned char Test;
+    int SizeOfTest = sizeof(Test);
 
-    Test = 500;
+    Test.IsThisOnFire = 1;
+    Test.Damage = 2;
+    Test.ParticlesPerSecond = 3;
+    Test.HowManyCooks = 4;
+
+    projectile* ProjectilePointer = &Test;
+    short* MrPointerMan = (short*)&Test;
 }
