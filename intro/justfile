@@ -1,14 +1,14 @@
 set shell := ["powershell.exe", "-c"]
 
-exe := "main.exe"
-input_file := ".\\main.cpp"
-output_file := ".\\main.exe"
+build_dir := ".\\build"
+source_file := ".\\main.cpp"
+exe_file_name := "Handmade.exe"
 
 build:
-  zig cc -o {{exe}} {{input_file}} "-Wl,/subsystem:windows"
+    zig cc -o {{ build_dir }}\\{{ exe_file_name }} {{ source_file }}
 
 run: build
-  {{output_file}}
+  {{build_dir}}\\{{ exe_file_name }}
 
 debug: build
-  raddbg.exe {{output_file}}
+  raddbg.exe {{build_dir}}\\{{ exe_file_name }}
