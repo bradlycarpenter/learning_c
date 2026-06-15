@@ -1,13 +1,14 @@
-set shell := ["cmd", "/c"]
+set shell := ["powershell.exe", "-c"]
 
-build_dir := "build"
+exe := "main.exe"
+input_file := ".\\main.cpp"
+output_file := ".\\main.exe"
 
 build:
-    if not exist {{build_dir}} mkdir {{build_dir}}
-    cl /nologo /Zi /Fe:{{build_dir}}\intro.exe main.cpp /link /SUBSYSTEM:WINDOWS
+  zig cc -o {{exe}} {{input_file}} "-Wl,/subsystem:windows"
 
 run: build
-    {{build_dir}}\intro.exe
+  {{output_file}}
 
 debug: build
-    raddbg.exe {{build_dir}}\intro.exe
+  raddbg.exe {{output_file}}

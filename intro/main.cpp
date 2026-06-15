@@ -15,8 +15,7 @@ int WINAPI WinMain(
     _In_ int nShowCmd
 )
 {
-    projectile Projectiles[40];
-    int SizeOfProjectiles = sizeof(Projectiles);
-    projectile* ProjectilePointer = Projectiles;
-    int SizeOfProjectilePointer = sizeof(ProjectilePointer);
+    int x = 0xA;
+    OutputDebugStringA("This is my output");
+    x = x << 4;
 }
