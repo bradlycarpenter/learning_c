@@ -12,17 +12,17 @@ MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LPARAM LParam)
   }
   break;
 
-  case WM_DESTROY:
-  {
-    OutputDebugStringA("WM_DESTROY\n");
-  }
-  break;
+  // case WM_DESTROY:
+  // {
+  //   OutputDebugStringA("WM_DESTROY\n");
+  // }
+  // break;
 
-  case WM_CLOSE:
-  {
-    OutputDebugStringA("WM_CLOSE\n");
-  }
-  break;
+  // case WM_CLOSE:
+  // {
+  //   OutputDebugStringA("WM_CLOSE\n");
+  // }
+  // break;
 
   case WM_PAINT:
   {
@@ -37,6 +37,7 @@ MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LPARAM LParam)
 
     PatBlt(DeviceContext, X, Y, Width, Height, WHITENESS);
     EndPaint(Window, &Paint);
+    OutputDebugStringA("WM_PAINT\n");
   }
   break;
 
@@ -53,19 +54,18 @@ MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LPARAM LParam)
 int CALLBACK WinMain(
     HINSTANCE Instance, HINSTANCE PrevInstance, LPSTR CommandLine, int ShowCode)
 {
-  WNDCLASS WindowClass = {};
-
-  // TODO Read up on these on MDN:
   // https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassw
+  WNDCLASS WindowClass = {};
 
   WindowClass.style         = CS_OWNDC;
   WindowClass.lpfnWndProc   = MainWindowCallback;
   WindowClass.hInstance     = Instance;
   WindowClass.lpszClassName = "HandMadeHeroWindowClass";
 
-  if (RegisterClass(&WindowClass))
+  // https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-registerclassa
+  if (RegisterClassA(&WindowClass))
   {
-    HWND WindowHandle = CreateWindowEx(
+    HWND WindowHandle = CreateWindowExA(
         0,
         WindowClass.lpszClassName,
         "HandMadeHero",
